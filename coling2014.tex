@@ -30,7 +30,7 @@
 % in the camera-ready version and ask you to change it back.
 
 
-\title{Instructions for COLING-2014 Proceedings}
+\title{An Analysis of Multiword Expressions in PPDB: the Paraphrase Database}
 
 \author{First Author \\
   Affiliation / Address line 1 \\
@@ -96,12 +96,12 @@ MWEs pose difficulties both for non-native speakers of English, as well as for N
 
 Among NLP systems, both parsers and information retrieval systems make errors on MWEs. As described by Villavicencio et al. (2007), Baldwin et al. (2004) found that, among a random sample of 20,000 strings from the written portion of the British National Corpus (BNC: Burnard, 2000), using the English Resource Grammar (ERG: Copestake and Flickinger, 2000), MWEs caused 8% of all parse errors. When manually­ selected compound nominals were searched for as single terms it improved information retrieval results (Acosta et al, 2011).
 
-Based on this information, it seems that identifying MWEs could be useful for NLP tasks. In this paper we use the Penn Paraphrases Database (PPDB) as a resource to define a MWE lexicon, which could be incorporated into other NLP systems.
+Based on this information, it seems that identifying MWEs could be useful for NLP tasks. In this paper we use the Paraphrase Database (PPDB) as a resource to define a MWE lexicon, which could be incorporated into other NLP systems.
 
-The Penn Paraphrases Database (PPDB) is a database containing English paraphrases. PPDB was developed using alignment techniques from machine translation on bilingual parallel corpora, pivoting on a foreign language, to find English phrases that translate to the same foreign-language phrase (Bannard and Callison-Burch, 2005). The database takes into account syntactic information of both the English and foreign-language phrases: the entries in PPDB were found using SCFGs to come up with paraphrases that form constituents of the same syntactic category (Ganitkevich et al, 2011; Ganitkevich et al, 2013).
+The Paraphrase Database (PPDB) is a database containing English paraphrases. PPDB was developed using alignment techniques from machine translation on bilingual parallel corpora, pivoting on a foreign language, to find English phrases that translate to the same foreign-language phrase (Bannard and Callison-Burch, 2005). The database takes into account syntactic information of both the English and foreign-language phrases: the entries in PPDB were found using SCFGs to come up with paraphrases that form constituents of the same syntactic category (Ganitkevich et al, 2011; Ganitkevich et al, 2013).
 
 \section{Experimental Design}
-The Penn Paraphrases Database (PPDB) contains English paraphrases. We have characterized a subset of the paraphrases found in the PPDB, according to categories of multi-word expressions (MWEs), syntactic changes in the expansion from a word to its paraphrase, and what parts of speech appear in the corpus. We also looked at how many of the paraphrases in the PPDB appear to be spurious.
+The Paraphrases Database (PPDB) contains English paraphrases. We have characterized a subset of the paraphrases found in the PPDB, according to categories of multi-word expressions (MWEs), syntactic changes in the expansion from a word to its paraphrase, and what parts of speech appear in the corpus. We also looked at how many of the paraphrases in the PPDB appear to be spurious.
 
 The categories of MWEs we looked at were light verbs, verb-particle constructions, negation, and superlatives. We also included Tim Baldwin's categories for MWEs: fixed expressions, non-decomposable idioms, compound nominals, proper names, and decomposable idioms. 
 
@@ -113,37 +113,44 @@ Of a random sample of 500 paraphrases from the L one-to-many paraphrase file, th
 
 Of the 500 paraphrases in the random sample, 37 (7.4\%) fell into the MWE categories defined by Baldwin et al. Of these MWE paraphrases, the most common were verb-particle constructions (14 instances, or 37.8\%) , followed by proper names (7, or 18.9\%). There were no instances of compound nominals in the sample.
 
-The full list of categories and the number of instances of paraphrases in each are in the table below (Table 1). MWEs, as defined by Baldwin et al., are marked in bold.
+The full list of categories with the number of instances of paraphrases in each, as well as illustrative examples for each, are in the table below (Table 1). MWEs, as defined by Baldwin et al., are marked in bold. 
 
 \begin{table}[h]
 \begin{center}
-\begin{tabular}{|l|rl|}
-\hline \bf Paraphrase Category & \bf Number of instances in sample & \\ \hline
-expansion, same morphological form & 117 &\\
-determiner + one-word paraphrase & 86 &\\
-expansion & 62 &\\
-change of tense + paraphrase & 43 &\\
-inaccurate/bad paraphrase & 43 &\\
-adverbial modifier& 27 &\\
-acronym & 21 &\\
-one or more words the same as part of original word & 17 &\\
-\bf verb-particle & 14  &\\
-determiner + plural & 9 &\\
-\bf proper noun & 7 &\\
-change of tense & 7 &\\
-\bf fixed expression & 6 &\\
-superlative & 5 &\\
-copula & 5 &\\
-\bf decomposable idiom & 4 &\\
-\bf light verb & 4  &\\
-number & 4 &\\
-infinitival to & 3 &\\
-nominalization & 3 &\\
-negation & 2 &\\
-time variation & 2 &\\
-punctuation & 2 &\\
-\bf non-decomposable idiom & 2 &\\
-alternate spelling & 1 &\\
+\begin{tabular}{|l|r|l|}
+\hline \bf Paraphrase Category & \bf Number of & \bf Examples \\ 
+ & \bf instances & \\
+ & \bf in sample & \\ \hline
+determiner + one-word paraphrase & 86 & photographs, the images; duties, the responsibilities \\
+expansion & 62 & suffocate, need air; cumbersome, time consuming \\
+expansion, same morphological form & 47 & fun, sounds like fun; signs, signs and signals \\
+change of tense + paraphrase & 43 & initiated, has undertaken; say, going to tell \\
+inaccurate/bad paraphrase & 43 & iron, a par; also, do i\\
+implicit/most common modifier & 41 & baghdad, iraqi capital baghdad; \\
+&& enrichment, uranium enrichment \\
+implicit type & 29 & training, training course; customs, customs offices \\
+adverbial modifier& 27 & interesting, very interesting; more, even more \\
+acronym & 21 & gpa, the global programme of action; cras, \\
+&& credit-rating agencies \\
+one or more words  & 17 &  anytime, any point; enslavement, slave labour \\
+the same as part of original word & &\\
+\bf verb-particle & 14  & torched, burnt down; done, carried out\\
+determiner + plural & 9 & gloves, the glove; militaries, the military\\
+\bf proper noun & 7 & markov, mr markov; karadzic, radovan karadzic\\
+change of tense & 7 & changing, be changed; attain, be attained\\
+\bf fixed expression & 6 & applied, put into effect; plenty, a whole host \\
+superlative & 5 & notably, most particularly; best-known, most famous\\
+copula & 5 & qualify, are eligible; reason, been right \\
+\bf decomposable idiom & 4 & nuts, out of your mind; sleeping, get a good night's sleep\\
+\bf light verb & 4  &  issued, made available; place, make way \\
+number & 4 & 20, twenty of; 5,000, 5 000\\
+infinitival to & 3 & track, to follow; answer, to reply \\
+nominalization & 3 &  operation, proper functioning \\
+negation & 2 & unused, not utilized; non-parties, not parties  \\
+time variation & 2 & 7:00, seven hours; 2003/04, the 2003-04 fiscal year\\
+punctuation & 2 & debt-servicing, debt servicing; what, somethin '\\
+\bf non-decomposable idiom & 2 & furious, as mad as hell; entails, brings with it\\
+alternate spelling & 1 & al-najaf, al nagaf\\
 \bf compound nominal & 0 &\\
 \hline
 \end{tabular}
@@ -165,37 +172,6 @@ The distribution of all of the parts of the speech from the L one-to-many paraph
 
 In both samples, the most common part of speech is NP, followed by VP. 
 
-Below (Table 1) are illustrative examples of all categories of paraphrases. Multiword expressions (as defined in Baldwin et al.) are marked in bold.
-
-\begin{table}[h]
-\begin{center}
-\begin{tabular}{|l|rl|}
-\hline \bf MWE Category & \bf Example & \\ \hline
-\bf verb-particle & torched, burnt down  &\\
-\bf fixed expression & applied, put into effect &\\
-\bf non-decomposable idiom & furious, as mad as hell &\\
-\bf proper noun & markov, mr markov &\\
-\bf decomposable idiom & nuts, out of your mind &\\
-\bf light verb & issued, made available  &\\
-superlative & notably, most particularly &\\
-negation & unused, not utilized &\\
-expansion & suffocate, need air &\\
-acronym & gpa, the global programme of action &\\
-change of tense + paraphrase & initiated, has undertaken &\\
-infinitival to & track, to follow &\\
-adverbial modifier& interesting, very interesting &\\
-one or ore words the same as part of original word & anytime, any point &\\
-determiner + one-word paraphrase & entry, the recordal &\\
-negation & unused, not utilized &\\
-copula & qualify, are eligible &\\
-expansion, same morphological form & revenue, tax revenue &\\
-nominalization & operation, proper functioning &\\
-inaccurate/bad paraphrase & peninsula, al jazeera &\\
-\hline
-\end{tabular}
-\end{center}
-\caption{\label{font-table} Examples from each category. }
-\end{table}
 
 In addition to categorizing a random sample of paraphrases, we searched for instances of light verbs, verb-particle constructions, negation, comparatives, and superlatives. The light verbs were those with the verb “have”, “take”, “make”, “hold” or “give, ” followed by a noun phrase. The verb-particle constructions were any verbs followed by the particles “down”, “up”, “on”, “out”, “over” or “upon.” Negation instances had the word “not” either in the original or the expanded paraphrase. Comparatives had the word “more,” and superlatives had the word “most.”
 
@@ -221,7 +197,64 @@ superlatives & grep '\textbackslash b most ' ppdb\textunderscore filename &\\
 \caption{\label{font-table} Linux commands to search for paraphrases of different types. }
 \end{table}
 
-The results from these searches are summarized in the tables below.
+The results from these searches are summarized in the tables below. We considered only light verb phrases with no extra terms (e.g., 'have a word', but not 'have a word with you' or 'can i have a word').
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|r|l|}
+\hline \bf Light verb & \bf Number of light verb phrases & \bf Number of light verb phrases\\ 
+ & & \bf  found by grep \\ \hline
+make & 35 & 46 \\
+have & 45 & 105 \\
+give & 4 & 11 \\
+take & 33 & 48 \\
+hold & 1 & 3 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{\label{font-table} Light verbs. }
+\end{table}
+
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|r|l|}
+\hline \bf Particle & \bf Number of verb-particle  & \bf Number of verb-particle\\ 
+ & \bf constructions found & \bf  phrases found by grep \\ \hline
+up & 439 & 439 \\
+about & 10 & 115 \\
+around & 44 & 47 \\
+back & 145 & 156 \\
+down & 190 & 195 \\
+in & 32 & 207 \\
+off & 134 & 134 \\
+on & 109 & 196 \\
+out & 383 & 383 \\
+over & 65 & 67 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{\label{font-table} Verb-particle constructions. }
+\end{table}
+
+After manually identifying categories, we developed a classifier to automatically find paraphrases that are interesting to MWE researchers. We built the classifier to find the following categories of MWE: verb-particle construction; expansion, same morphological form; implicit/most common modifier; implicit type; light verb; fixed expression; non-decomposable idiom; proper noun; decomposable idiom; light verb. 
+
+The features we used were whether a preposition appeared in the expansion of the paraphrase (feature value either 1 or 0), whether the original word appeared in the expansion, whether a light verb appeared in the expansion, and all of the scores from the PPDB (every number that appeared in the entry following an equal sign).
+
+The prepositions and light verbs used for the features are listed in the table below.
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|rl|}
+\hline \bf prepositions &  'about', 'around', 'back', 'down', 'in', 'off', 'on', 'out', 'over', 'up'  &\\ \hline
+\bf light verbs &  'give', 'have', 'hold', 'make', 'take' &\\
+\hline
+\end{tabular}
+\end{center}
+\caption{\label{font-table} Words used as features for classifier. }
+\end{table}
+
+We used an SVM classifier (libsvm) with these features on our sample of 500 words. With ten-fold cross-validation, the accuracy of the classifier was 75.4%. By comparison, a baseline classifier that returns the majority class has an accuracy of 69.2%. 
 
 %
 % We are not doing the following for Coling 2014. Maybe next time.
