@@ -30,7 +30,7 @@
 % in the camera-ready version and ask you to change it back.
 
 
-\title{An Analysis of Multiword Expressions in PPDB: the Paraphrase Database}
+\title{An Analysis of Multiword Expressions in the Paraphrase Database}
 
 \author{First Author \\
   Affiliation / Address line 1 \\
@@ -48,7 +48,7 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-In this paper we present a feasibility study for rewriting multiword expressions as single words, which NLP systems could potentially process more easily than the original phrases. Here we investigate PPDB: The Paraphrase Database to get a mapping from multiword expressions onto single words, using the MWE categorization system as described in Baldwin, et al. 
+We investigate whether paraphrases might be a useful resource for understanding multiword expressions (MWEs).  In particular, we analyze the paraphrases in PPDB, the Paraphrase Database, where multiple words are re-written as a single word.  By automatically mapping from multiword expressions onto single words, NLP systems could potentially process the re-written text more easily than the original text containing MWEs. We use the MWE categorization system as described in \newcite{BaldwinCategorization}.  Although a small proportion of the many-to-one paraphrases in PPDB are classic MWEs, the resource contains millions of entries.  We therefore train a classifier to distinguish interesting MWEs from other sorts of many-to-one paraphrases.
 \end{abstract}
 
 \section{Introduction}
@@ -279,52 +279,13 @@ We used an SVM classifier (libsvm) with these features on our sample of 500 word
 
 \section{Analysis}
 
-\section*{Acknowledgements}
 
-The acknowledgements should go immediately before the references.  Do
-not number the acknowledgements section. Do not include this section
-when submitting your paper for review.
+%\section*{Acknowledgements} 
+%This material is based on research sponsored by the NSF under grant IIS-1249516 and DARPA under agreement number FA8750-13-2-0017 (the DEFT program). The U.S. Government is authorized to reproduce and distribute reprints for Governmental purposes. The views and conclusions contained in this publication are those of the authors and should not be interpreted as representing official policies or endorsements of DARPA or the U.S. Government.
 
 % include your own bib file like this:
 %\bibliographystyle{acl}
 %\bibliography{acl2014}
 
-\begin{thebibliography}{}
-
-\bibitem[\protect\citename{Shigeto \bgroup et al. \egroup }2013]{Shigeto:13}
-...........................................
-
-\bibitem[\protect\citename{Aho and Ullman}1972]{Aho:72}
-Yutaro Shigeto, Ai Azuma, Sorami Hisamoto, Shuhei Kondo, Tomoya Kose,
-Keisuke Sakaguchi, Akifumi Yoshimoto, Frances Yung, and Yuji Matsumoto.
-\newblock 2013
-\newblock Construction of English MWE Dictionary andits Application to POS Tagging
-\newblock{\em Proceedings of the 9th Workshop on Multiword Expressions},139--144.
-
-\bibitem[\protect\citename{Constant \bgroup et al.\egroup }1981]{Chandra:81}
-Matthieu Constant, Anthony Sigogne, and Patrick Watrin.
-\newblock 2012.
-\newblock Discriminative strategies to integrate multiword expression recognition and parsing.
-\newblock {\em ACL '12 Proceedings of the 50th Annual Meeting of the Association for Computational Linguistics: Long Papers - Volume 1},
-204-212.
-
-\bibitem[\protect\citename{{American Psychological Association}}1983]{APA:83}
-{American Psychological Association}.
-\newblock 1983.
-\newblock {\em Publications Manual}.
-\newblock American Psychological Association, Washington, DC.
-
-\bibitem[\protect\citename{{Association for Computing Machinery}}1983]{ACM:83}
-{Association for Computing Machinery}.
-\newblock 1983.
-\newblock {\em Computing Reviews}, 24(11):503--512.
-
-\bibitem[\protect\citename{Gusfield}1997]{Gusfield:97}
-Dan Gusfield.
-\newblock 1997.
-\newblock {\em Algorithms on Strings, Trees and Sequences}.
-\newblock Cambridge University Press, Cambridge, UK.
-
-\end{thebibliography}
 
 \end{document}
