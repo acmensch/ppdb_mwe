@@ -164,17 +164,37 @@ alternate spelling & 1 & al-najaf, al nagaf\\
 \caption{\label{font-table} Number of instances from each category in random sample of 500. }
 \end{table}
 
-The distribution of the parts of speech from this random sample is depicted in the histogram below. 
+The distribution of the syntactic categories from this random sample is depicted in Table \ref{sc-dist}. 
 
+\begin{table}[h]
 \begin{center}
-\includegraphics[width=150mm]{figs/random_sample_pos_histogram_500.pdf}
+\begin{tabular}{|l|l|l|}
+\hline \bf Syntactic category & \bf Frequency in sample & \bf Frequency in PPDB-L \\ \hline
+NP & 254 & 101563 \\
+VP & 109 & 39380 \\
+X & 39 & 17005 \\
+ADJP & 27 & 14513 \\
+ADVP & 16 & 5451 \\
+S & 9 & 4103 \\
+INTJ & 3 & 1730 \\
+TOP & 4 & 1476 \\
+NX & 2 & 1113 \\
+PP & 1 & 532 \\
+FRAG & 3 & 388  \\ 
+SQ & 0 & 305 \\
+SBAR & 0 & 165 \\
+WHNP & 0 & 163 \\
+WHADVP & 0 & 66 \\
+QP & 0 & 39 \\
+LST & 0 & 3 \\ 
+SBARQ & 0 & 3 \\
+CONJP & 0 & 1 \\
+PRT & 0 & 1 \\
+\hline
+\end{tabular}
 \end{center}
-
-The distribution of all of the parts of the speech from the L one-to-many paraphrase file is depicted in the following histogram:
-
-\begin{center}
-\includegraphics[width=175mm]{figs/random_sample_pos_histogram_all.pdf}
-\end{center}
+\caption{\label{sc-dist} Distribution of syntactic categories in random sample of 500 words from PPDB L, and in the entire PPDB L file, sorted by frequency in PPDB L. }
+\end{table}
 
 In both samples, the most common part of speech is NP, followed by VP. 
 
@@ -207,20 +227,20 @@ The results from these searches are summarized in the tables below. We considere
 
 \begin{table}[h]
 \begin{center}
-\begin{tabular}{|l|r|l|}
-\hline \bf Light verb & \bf Number of light verb phrases & \bf Number of light verb phrases\\ 
- & & \bf  found by grep \\ \hline
-make & 35 & 46 \\
-have & 45 & 105 \\
-give & 4 & 11 \\
-take & 33 & 48 \\
-hold & 1 & 3 \\
+\begin{tabular}{|l|l|l|l|}
+\hline \bf Light verb & \bf Number of light & \bf Number of light & \bf Matching verbs\\ 
+ & \bf verb phrases & \bf verb phrases & \\ 
+ & \bf  found by grep & & \\ \hline
+make & 46 & 35 & make a call, make a decision, make a suggestion\\
+have & 105 & 45 & have a ball, have a conversation, have a word\\
+give & 11 & 4 & give a damn, give a reply\\
+take & 48 & 33 & take a break, take a look, take a walk\\
+hold & 3 & 1 & hold a debate\\
 \hline
 \end{tabular}
 \end{center}
-\caption{\label{font-table} Light verbs. }
+\caption{\label{font-table} Light verbs: number of potential light verb phrases found by grep, the number of these that turned out to be light-verb phrases, and some examples. }
 \end{table}
-
 
 \begin{table}[h]
 \begin{center}
@@ -261,6 +281,16 @@ The prepositions and light verbs used for the features are listed in the table b
 \end{table}
 
 We used an SVM classifier (libsvm) with these features on our sample of 500 words. With ten-fold cross-validation, the accuracy of the classifier was 75.4%. By comparison, a baseline classifier that returns the majority class has an accuracy of 69.2%. 
+
+To determine whether a lexicon of paraphrases extracted from the PPDB would be useful for the task of parsing, we took a sample of 33 paraphrases that fall into the Tim Baldwin categories (verb particle, fixed expression, non-decomposable idiom, compound nominal, proper name, decomposable idiom, and light verb) from the random sample of 500 words. We then did a Google search to find a sentence containing the expansion, and then created an equivalent sentence by replacing the expansion with the one-word paraphrase. We used the Berkeley parser to parse these sentence pairs and compared the parse trees.
+
+Of the 33 paraphrases sampled, 30 were correctly parsed using the one-word paraphrase, and 29 were correctly parsed using the expansion. 2 were parsed correctly for the one-word paraphrase but not for the expansion, 1 was parsed correctly for the expansion but not the one-word paraphrase, and 1 was parsed incorrectly for both. Figure \ref{avail} shows the trees for a case where the sentence containing the one-word paraphrase ("leverage") is parsed correctly, but the sentence containing the expansion ("avail myself of") is not.
+
+\begin{center}
+\label{avail}
+\includegraphics[width=75mm]{figs/avail_myself_of_tree.pdf}
+\end{center}
+
 
 %
 % We are not doing the following for Coling 2014. Maybe next time.
