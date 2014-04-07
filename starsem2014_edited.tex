@@ -67,7 +67,7 @@ We investigate whether paraphrases might be a useful resource for understanding 
 % The following footnote without marker is needed for the camera-ready
 % version of the paper.
 % Comment out the instructions (first text) and uncomment the 8 lines
-% under "final paper" for your variant of English.
+% under ``final paper" for your variant of English.
 % 
 \blfootnote{
     %
@@ -119,19 +119,19 @@ The Paraphrase Database (PPDB) is a database containing English paraphrases. PPD
 Various definitions of MWEs have been used for NLP tasks. Sag et al. define a taxonomy of multiword expressions that is widely used in computational MWE research. They define broad categories for MWEs (fixed expressions, semi-fixed expressions, syntactically flexible expressions, institutionalized phrases), and more specific categories within each of these. The following is a brief outline of the categories defined by Sag et al. that we investigate in this paper:
 
 \begin{itemize}
-\item Fixed expressions. These are expressions that don't fit standard grammatical rules and are not compositional. An exampleis the phrase "all of a sudden," which means "suddenly." The meaning of the entire phrase is not the same as the individual words in the phrase, meaning it is not compositional. Furthermore, it does not follow standard grammar rules, which can be seen by replacing the word sudden, normally an adjective, with another adjective: "all of a happy" is nonsensical. Some other examples are "in short" and "kingdom come" \cite{Sag2002}.
+\item Fixed expressions. These are expressions that don't fit standard grammatical rules and are not compositional. An exampleis the phrase ``all of a sudden," which means ``suddenly." The meaning of the entire phrase is not the same as the individual words in the phrase, meaning it is not compositional. Furthermore, it does not follow standard grammar rules, which can be seen by replacing the word sudden, normally an adjective, with another adjective: ``all of a happy" is nonsensical. Some other examples are ``in short" and ``kingdom come" \cite{Sag2002}.
 
-\item Non-decomposable idioms. These are expressions that follow grammatical rules, but whose meaning is not compositional. An example is "kick the bucket," where the grammatical structure is valid (e.g., "kick the stone," which has the same grammatical structure, is an acceptable English phrase), but the meaning of the phrase is not the meaning the sum of its parts. Other examples include "to take the bull by the horns" and "to beat swords into plowshares." (Nunberg, Sag, Wasow).***
+\item Non-decomposable idioms. These are expressions that follow grammatical rules, but whose meaning is not compositional. An example is ``kick the bucket," where the grammatical structure is valid (e.g., ``kick the stone," which has the same grammatical structure, is an acceptable English phrase), but the meaning of the phrase is not the meaning the sum of its parts. Other examples include ``to take the bull by the horns" and ``to beat swords into plowshares." (Nunberg, Sag, Wasow).***
 
-\item Compoun nominal. These are noun combinations whose meaning is different than the individual nouns in the phrase. An example is "orange juice," where the meaning is juice from an orange. Other examples are "hand lotion," "street sign," and "newspaper column." The relationship between the nouns in the compound nominal cannot be deduced from their order in the phrase (orange juice is the juice from an orange, whereas hand lotion is lotion intended for hands).
+\item Compoun nominal. These are noun combinations whose meaning is different than the individual nouns in the phrase. An example is ``orange juice," where the meaning is juice from an orange. Other examples are ``hand lotion," ``street sign," and ``newspaper column." The relationship between the nouns in the compound nominal cannot be deduced from their order in the phrase (orange juice is the juice from an orange, whereas hand lotion is lotion intended for hands).
 
-\item Proper nouns. These are nouns that are names for unique entities. Some examples are places (California, the Bronx), people (President Roosevelt), and events (the Industrial Revolution). This category is included in the taxonomy because names allow for some kinds of variation but not others. For example, the San Francisco 49ers, the 49ers, and 49ers are all valid names for the sports team, but "the Oakland 49ers" is not (because it is the wrong city).
+\item Proper nouns. These are nouns that are names for unique entities. Some examples are places (California, the Bronx), people (President Roosevelt), and events (the Industrial Revolution). This category is included in the taxonomy because names allow for some kinds of variation but not others. For example, the San Francisco 49ers, the 49ers, and 49ers are all valid names for the sports team, but ``the Oakland 49ers" is not (because it is the wrong city).
 
-\item Decomposable idioms. These are phrases whose meaning is a combination of the meanings of the words they comprise. One example is the idiom "play with fire" (Wikipedia)***, whose meaning can be derived from the meaning of the individual words, but nonetheless has an idiomatic meaning. Furthermore, decomposable idioms can undergo syntactic changes, but the extent to which they can change depends on the particular idiom. For example, the phrase "let the cat out of the bag" can be modified to "the cat was out of the bag," but also to "the cat was really out of the bag," adding an adverb. On the other hand, "keep tabs on" can be modified to "keep tabs of,"  which is a change in the preposition of the phrase \cite{Riehemann01aconstructional}. 
+\item Decomposable idioms. These are phrases whose meaning is a combination of the meanings of the words they comprise. One example is the idiom ``play with fire" (Wikipedia)***, whose meaning can be derived from the meaning of the individual words, but nonetheless has an idiomatic meaning. Furthermore, decomposable idioms can undergo syntactic changes, but the extent to which they can change depends on the particular idiom. For example, the phrase ``let the cat out of the bag" can be modified to ``the cat was out of the bag," but also to ``the cat was really out of the bag," adding an adverb. On the other hand, ``keep tabs on" can be modified to ``keep tabs of,"  which is a change in the preposition of the phrase \cite{Riehemann01aconstructional}. 
 
-\item Verb-particle constructions. These are verb phrases formed of a verb followed by a particle, where the meaning of the phrase is different than that of the verb alone, or up the verb and the particle combined. Some examples are "wash out," "break down," and "follow up." 
+\item Verb-particle constructions. These are verb phrases formed of a verb followed by a particle, where the meaning of the phrase is different than that of the verb alone, or up the verb and the particle combined. Some examples are ``wash out," ``break down," and ``follow up." 
 
-\item Light verbs. These are verb phrases formed of a light verb (make, give, have), followed by a noun phrase. Some examples are "make a compromise," "give a presentation," and "have a rest." The verb of the phrase is inflected to change tense ("made a compromise"). The particular verb that a given light verb phrase will use is difficult to predict from the original verb. For example, "to walk" can be put as a light verb phrase, "to take a walk," but not "to make a walk," whereas "to make a presentation" is fine and "to take a presentation" nonsensical.
+\item Light verbs. These are verb phrases formed of a light verb (make, give, have), followed by a noun phrase. Some examples are ``make a compromise," ``give a presentation," and ``have a rest." The verb of the phrase is inflected to change tense ("made a compromise"). The particular verb that a given light verb phrase will use is difficult to predict from the original verb. For example, ``to walk" can be put as a xpansion,  phrase, ``to take a walk," but not ``to make a walk," whereas ``to make a presentation" is fine and ``to take a presentation" nonsensical.
 \end{itemize}
 
 Other work has described a division of MWEs extracted from paraphrases: one-to-many, many-to-one,  decomposable and non-decomposable \cite{dpm}. They also investigated using paraphrases to automatically extract multiword expressions. \cite{dpm} consider dependency-based paraphrases and parallel corpora-based paraphrases as sources for MWEs, finding that 34\% of the MWEs in the MSR manual word alignments of the RTE 2006 corpus were present in these resources (Brockett, 2007). 
@@ -155,7 +155,7 @@ The full list of categories with the number of instances of paraphrases in each,
 
 
 \begin{center}
-\begin{table*}[ht]
+\begin{table*}
 \hfill{}
 \begin{tabular}{|l|l|l|}
 \hline
@@ -198,16 +198,16 @@ alternate spelling & 1 & al-najaf, al nagaf\\
 \end{tabular}
 \hfill{}
 \caption{\label{font-table} Number of instances from each category in random sample of 500. }
-\label{tb:tablename}
 \end{table*}
 \end{center}
 The distribution of the syntactic categories from this random sample is depicted in Table \ref{sc-dist}. 
 
-\begin{center}
-\begin{table*}[ht]
+\begin{table}
 \hfill{}
+\begin{center}
 \begin{tabular}{|l|l|l|}
-\hline \bf Syntactic category & \bf Frequency in sample & \bf Frequency in PPDB-L \\ \hline
+\hline \bf Syntactic  & \bf Freq in  & \bf Freq in  \\ 
+\bf  category & \bf sample & \bf PPDB-L \\ \hline
 NP & 254 & 101563 \\
 VP & 109 & 39380 \\
 X & 39 & 17005 \\
@@ -230,9 +230,9 @@ CONJP & 0 & 1 \\
 PRT & 0 & 1 \\
 \hline
 \end{tabular}
-\caption{\label{sc-dist} Distribution of syntactic categories in random sample of 500 words from PPDB L, and in the entire PPDB L file, sorted by frequency in PPDB L. }
-\end{table*}
 \end{center}
+\caption{\label{sc-dist} Distribution of syntactic categories in random sample of 500 words from PPDB L, and in the entire PPDB L file, sorted by frequency in PPDB L. }
+\end{table}
 
 In both samples, the most common part of speech is NP, followed by VP. 
 
@@ -265,7 +265,7 @@ superlatives & grep '\textbackslash b most ' ppdb\textunderscore filename &\\
 The results from these searches are summarized in the tables below. We considered only light verb phrases with no extra terms (e.g., 'have a word', but not 'have a word with you' or 'can i have a word').
 
 \begin{center}
-\begin{table*}[ht]
+\begin{table*}
 \hfill{}
 \begin{tabular}{|l|l|l|l|}
 \hline \bf Light verb & \bf Number of light & \bf Number of light & \bf Matching verbs\\ 
@@ -280,7 +280,7 @@ hold & 3 & 1 & hold a debate\\
 \end{tabular}
 \hfill{}
 \caption{Light verbs: number of potential light verb phrases found by grep, the number of these that turned out to be light-verb phrases, and some examples. }
-\label{tb:tablename}
+\label{light-verbs}
 \end{table*}
 \end{center}
 
@@ -321,7 +321,7 @@ The features we used were whether a preposition appeared in the expansion of the
 The prepositions and light verbs used for the features are listed in the table below.
 
 \begin{center}
-\begin{table*}[ht]
+\begin{table*}
 {\small
 \hfill{}
 \begin{tabular}{|l|rl|}
