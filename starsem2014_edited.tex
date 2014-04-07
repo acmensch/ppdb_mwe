@@ -1,8 +1,9 @@
 %
-% File coling2014.tex
+% File twocolumn.tex
 %
-% Contact: jwagner@computing.dcu.ie
+% Contact: v.basile@rug.nl
 %%
+%% Based on the style files for COLING-2014, which were, in turn,
 %% Based on the style files for ACL-2014, which were, in turn,
 %% Based on the style files for ACL-2013, which were, in turn,
 %% Based on the style files for ACL-2012, which were, in turn,
@@ -16,7 +17,7 @@
 %% and that of ACL 08 by Joakim Nivre and Noah Smith
 
 \documentclass[11pt]{article}
-\usepackage{coling2014}
+\usepackage{starsem2014}
 \usepackage{times}
 \usepackage{url}
 \usepackage{latexsym}
@@ -25,6 +26,7 @@
 \usepackage{subcaption}
 \usepackage{multibib}
 
+
 %\setlength\titlebox{5cm}
 
 % You can expand the titlebox if you need extra space
@@ -32,6 +34,10 @@
 % smaller than 5cm (the original size); we will check this
 % in the camera-ready version and ask you to change it back.
 
+\newcommand{\wsname}{*SEM 2014}
+\newcommand{\submissionpage}{\url{http://starsem.webhosting.rug.nl/wp/?page_id=22}}
+\newcommand{\filename}{starsem2014}
+\newcommand{\contact}{v.basile@rug.nl}
 
 \title{An Analysis of Multiword Expressions in the Paraphrase Database}
 
@@ -113,44 +119,50 @@ The Paraphrase Database (PPDB) is a database containing English paraphrases. PPD
 Various definitions of MWEs have been used for NLP tasks. Sag et al. define a taxonomy of multiword expressions that is widely used in computational MWE research. They define broad categories for MWEs (fixed expressions, semi-fixed expressions, syntactically flexible expressions, institutionalized phrases), and more specific categories within each of these. The following is a brief outline of the categories defined by Sag et al. that we investigate in this paper:
 
 \begin{itemize}
-\item Fixed expressions. These are expressions that don't fit standard grammar rules and are not compositional.
+\item Fixed expressions. These are expressions that don't fit standard grammatical rules and are not compositional. An exampleis the phrase "all of a sudden," which means "suddenly." The meaning of the entire phrase is not the same as the individual words in the phrase, meaning it is not compositional. Furthermore, it does not follow standard grammar rules, which can be seen by replacing the word sudden, normally an adjective, with another adjective: "all of a happy" is nonsensical. Some other examples are "in short" and "kingdom come" \cite{Sag2002}.
 
-\item Non-decomposable idioms. These are expressions that follow grammatical rules, but whose meaning is not compositional.
+\item Non-decomposable idioms. These are expressions that follow grammatical rules, but whose meaning is not compositional. An example is "kick the bucket," where the grammatical structure is valid (e.g., "kick the stone," which has the same grammatical structure, is an acceptable English phrase), but the meaning of the phrase is not the meaning the sum of its parts. Other examples include "to take the bull by the horns" and "to beat swords into plowshares." (Nunberg, Sag, Wasow).***
 
-\item Compoun nominal. Noun combinations whose meaning is different than the individual nouns in the phrase.
+\item Compoun nominal. These are noun combinations whose meaning is different than the individual nouns in the phrase. An example is "orange juice," where the meaning is juice from an orange. Other examples are "hand lotion," "street sign," and "newspaper column." The relationship between the nouns in the compound nominal cannot be deduced from their order in the phrase (orange juice is the juice from an orange, whereas hand lotion is lotion intended for hands).
 
-\item Proper nouns. These are included in the taxonomy because names allow for some kinds of variation but not others (e.g., the San Francisco 49ers, the 49ers, 49ers, but not the Oakland 49ers).
+\item Proper nouns. These are nouns that are names for unique entities. Some examples are places (California, the Bronx), people (President Roosevelt), and events (the Industrial Revolution). This category is included in the taxonomy because names allow for some kinds of variation but not others. For example, the San Francisco 49ers, the 49ers, and 49ers are all valid names for the sports team, but "the Oakland 49ers" is not (because it is the wrong city).
 
-\item Decomposable idioms. 
+\item Decomposable idioms. These are phrases whose meaning is a combination of the meanings of the words they comprise. One example is the idiom "play with fire" (Wikipedia)***, whose meaning can be derived from the meaning of the individual words, but nonetheless has an idiomatic meaning. Furthermore, decomposable idioms can undergo syntactic changes, but the extent to which they can change depends on the particular idiom. For example, the phrase "let the cat out of the bag" can be modified to "the cat was out of the bag," but also to "the cat was really out of the bag," adding an adverb. On the other hand, "keep tabs on" can be modified to "keep tabs of,"  which is a change in the preposition of the phrase \cite{Riehemann01aconstructional}. 
 
-\item Verb-particle constructions. These are verb phrases formed of a verb followed by a particle, where the meaning of the phrase is different than that of the verb alone.
+\item Verb-particle constructions. These are verb phrases formed of a verb followed by a particle, where the meaning of the phrase is different than that of the verb alone, or up the verb and the particle combined. Some examples are "wash out," "break down," and "follow up." 
 
-\item Light verbs. These are verb phrases formed of a light verb (make, give, do), followed by a noun phrase.
+\item Light verbs. These are verb phrases formed of a light verb (make, give, have), followed by a noun phrase. Some examples are "make a compromise," "give a presentation," and "have a rest." The verb of the phrase is inflected to change tense ("made a compromise"). The particular verb that a given light verb phrase will use is difficult to predict from the original verb. For example, "to walk" can be put as a light verb phrase, "to take a walk," but not "to make a walk," whereas "to make a presentation" is fine and "to take a presentation" nonsensical.
 \end{itemize}
 
 Other work has described a division of MWEs extracted from paraphrases: one-to-many, many-to-one,  decomposable and non-decomposable \cite{dpm}. They also investigated using paraphrases to automatically extract multiword expressions. \cite{dpm} consider dependency-based paraphrases and parallel corpora-based paraphrases as sources for MWEs, finding that 34\% of the MWEs in the MSR manual word alignments of the RTE 2006 corpus were present in these resources (Brockett, 2007). 
 
-\section{Experimental Design}
+\section{Analysis of PPDB}
 The Paraphrases Database (PPDB) contains English paraphrases. We have characterized a subset of the paraphrases found in the PPDB, according to categories of multi-word expressions (MWEs), syntactic changes in the expansion from a word to its paraphrase, and what parts of speech appear in the corpus. We also looked at how many of the paraphrases in the PPDB appear to be spurious.
 
 The categories of MWEs we looked at were light verbs, verb-particle constructions, negation, and superlatives. We also included the categories for MWEs described in Sag et al: fixed expressions, non-decomposable idioms, compound nominals, proper names, and decomposable idioms. 
 
 In addition to MWE categories, we also included categories for syntactic changes from a word to its paraphrase: change of tense followed by a paraphrase, nominalizations, infinitival to, adverbial modifier, one or more words the same as part of the original word, determiner followed by a one-word paraphrase, determiner followed by the plural form, and change of tense. Finally, we included acronyms, hypernym-hyponym pairs, times, extra punctuation marks, and numbers as categories, as well as unspecified expansions and bad paraphrases. 
 
-\section{Results}
+PPDB is released in a series of files. The different files are divided into one-to-one (synonyms), one-to-many, many-to-many, phrasal, and syntactic files. The lexical paraphrases are from one word to one word, the one-to-many are paraphrases between one word and a multi-word expression, many-to-many paraphrases are paraphrases between two multiword expressions, and syntactic paraphrases are paraphrases are those where the syntactic category is the same for both a phrase and its paraphrase. For this analysis we investigate the one-to-many paraphrase file as a source of potential paraphrases for multiword expressions.
+
+The PPDB files are further subdivided by size, from S to XXXL (six sizes). Each paraphrase in the PPDB is scored according to how precise of a paraphrase it is likely to be. The smaller files contain better-scoring paraphrases, while the larger files contain incrementally more paraphrases, at the cost of precision. For this analysis we chose the L corpus as a compromise point among the various sizes for both coverage and quality of paraphrases.
 
 Of a random sample of 500 paraphrases from the L one-to-many paraphrase file, the most common types of paraphrase were expansions using the same morphological form (117 instances, or 23.4\%), determiner followed by a one-word paraphrase (86 instances, or 17.2\%), and paraphrases that did not fall into a particular category (62 instances, or 12.4\%). Of the sample, 43 were bad paraphrases (8.6\%). The full list of categories and the number of instances in each are in the table below.  
 
-Of the 500 paraphrases in the random sample, 37 (7.4\%) fell into the MWE categories defined by Baldwin et al. Of these MWE paraphrases, the most common were verb-particle constructions (14 instances, or 37.8\%) , followed by proper names (7, or 18.9\%). There were no instances of compound nominals in the sample.
+Of the 500 paraphrases in the random sample, 37 (7.4\%) fell into the MWE categories defined by \newcite{Sag2002}l. Of these MWE paraphrases, the most common were verb-particle constructions (14 instances, or 37.8\%) , followed by proper names (7, or 18.9\%). There were no instances of compound nominals in the sample.
 
 The full list of categories with the number of instances of paraphrases in each, as well as illustrative examples for each, are in the table below (Table 1). MWEs, as defined by \newcite{Sag2002}, are marked in bold. 
 
-\begin{table}[h]
+
 \begin{center}
-\begin{tabular}{|l|r|l|}
-\hline \bf Paraphrase Category & \bf Number of & \bf Examples \\ 
+\begin{table*}[ht]
+\hfill{}
+\begin{tabular}{|l|l|l|}
+\hline
+\bf Paraphrase Category & \bf Number of & \bf Examples \\ 
  & \bf instances & \\
- & \bf in sample & \\ \hline
+ & \bf in sample & \\ 
+\hline
 determiner + one-word paraphrase & 86 & photographs, the images; duties, the responsibilities \\
 expansion & 62 & suffocate, need air; cumbersome, time consuming \\
 expansion, same morphological form & 47 & fun, sounds like fun; signs, signs and signals \\
@@ -184,14 +196,16 @@ alternate spelling & 1 & al-najaf, al nagaf\\
 \bf compound nominal & 0 &\\
 \hline
 \end{tabular}
-\end{center}
+\hfill{}
 \caption{\label{font-table} Number of instances from each category in random sample of 500. }
-\end{table}
-
+\label{tb:tablename}
+\end{table*}
+\end{center}
 The distribution of the syntactic categories from this random sample is depicted in Table \ref{sc-dist}. 
 
-\begin{table}[h]
 \begin{center}
+\begin{table*}[ht]
+\hfill{}
 \begin{tabular}{|l|l|l|}
 \hline \bf Syntactic category & \bf Frequency in sample & \bf Frequency in PPDB-L \\ \hline
 NP & 254 & 101563 \\
@@ -216,9 +230,9 @@ CONJP & 0 & 1 \\
 PRT & 0 & 1 \\
 \hline
 \end{tabular}
-\end{center}
 \caption{\label{sc-dist} Distribution of syntactic categories in random sample of 500 words from PPDB L, and in the entire PPDB L file, sorted by frequency in PPDB L. }
-\end{table}
+\end{table*}
+\end{center}
 
 In both samples, the most common part of speech is NP, followed by VP. 
 
@@ -231,8 +245,9 @@ We then determined manually whether the phrases found were verb-particle constru
 
 We used similar commands to find instances of the other paraphrase categories. A list of the commands used is in the following table:
 
-\begin{table}[h]
 \begin{center}
+\begin{table*}[h]
+\hfill{}
 \begin{tabular}{|l|rl|}
 \hline \bf Paraphrase category & \bf Search command & \\ \hline
 verb-particle construction & grep ' up \textbackslash b' ppdb\textunderscore filename &\\
@@ -242,14 +257,16 @@ comparatives & grep '\textbackslash b more ' ppdb\textunderscore filename &\\
 superlatives & grep '\textbackslash b most ' ppdb\textunderscore filename &\\
 \hline
 \end{tabular}
-\end{center}
+\hfill{}
 \caption{\label{font-table} Linux commands to search for paraphrases of different types. }
-\end{table}
+\end{table*}
+\end{center}
 
 The results from these searches are summarized in the tables below. We considered only light verb phrases with no extra terms (e.g., 'have a word', but not 'have a word with you' or 'can i have a word').
 
-\begin{table}[h]
 \begin{center}
+\begin{table*}[ht]
+\hfill{}
 \begin{tabular}{|l|l|l|l|}
 \hline \bf Light verb & \bf Number of light & \bf Number of light & \bf Matching verbs\\ 
  & \bf verb phrases & \bf verb phrases & \\ 
@@ -261,15 +278,18 @@ take & 48 & 33 & take a break, take a look, take a walk\\
 hold & 3 & 1 & hold a debate\\
 \hline
 \end{tabular}
+\hfill{}
+\caption{Light verbs: number of potential light verb phrases found by grep, the number of these that turned out to be light-verb phrases, and some examples. }
+\label{tb:tablename}
+\end{table*}
 \end{center}
-\caption{\label{font-table} Light verbs: number of potential light verb phrases found by grep, the number of these that turned out to be light-verb phrases, and some examples. }
-\end{table}
 
-\begin{table}[h]
+\begin{table*}[h]
 \begin{center}
 \begin{tabular}{|l|r|l|}
-\hline \bf Particle & \bf Number of verb-particle  & \bf Number of verb-particle\\ 
- & \bf constructions found & \bf  phrases found by grep \\ \hline
+\hline \bf Particle & \bf Number of verb-particle  & \bf Number of verb-\\ 
+ & \bf constructions found & \bf  particle phrases \\ 
+& & \bf found by grep \\ \hline
 up & 439 & 439 \\
 about & 10 & 115 \\
 around & 44 & 47 \\
@@ -284,32 +304,51 @@ over & 65 & 67 \\
 \end{tabular}
 \end{center}
 \caption{\label{font-table} Verb-particle constructions. }
-\end{table}
+\end{table*}
 
-After manually identifying categories, we developed a classifier to automatically find paraphrases that are interesting to MWE researchers. We built the classifier to find the following categories of MWE: verb-particle construction; expansion, same morphological form; implicit/most common modifier; implicit type; light verb; fixed expression; non-decomposable idiom; proper noun; decomposable idiom; light verb. 
+Among the 500 paraphrases in the sample, 37 fell into the category of interesting MWEs. Since the PPDB L one-to-many corpus contains 188,000 rules, based on our sample, we expect there to be around 14,000 relevant MWEs in the corpus.
+
+\section{Building a classifier for MWEs in PPDB}
+
+There are 188,000 rules in the PPDB L one-to-many file, which is too many to manually sift through and find relevant MWEs. Therefore, we built a classifier to automatically distinguish between trivial MWEs and paraphrases that are interesting to MWE researchers.
+
+\subsection{Experimental setup}
+
+We designed features tailored to find paraphrases in the following categories of MWE: verb-particle construction; expansion, same morphological form; implicit/most common modifier; implicit type; light verb; fixed expression; non-decomposable idiom; proper noun; decomposable idiom; light verb. The methodology used in the classifier could also be applied more generally for finding relevant expressions in PPDB.
 
 The features we used were whether a preposition appeared in the expansion of the paraphrase (feature value either 1 or 0), whether the original word appeared in the expansion, whether a light verb appeared in the expansion, and all of the scores from the PPDB (every number that appeared in the entry following an equal sign).
 
 The prepositions and light verbs used for the features are listed in the table below.
 
-\begin{table}[h]
 \begin{center}
+\begin{table*}[ht]
+{\small
+\hfill{}
 \begin{tabular}{|l|rl|}
 \hline \bf prepositions &  'about', 'around', 'back', 'down', 'in', 'off', 'on', 'out', 'over', 'up'  &\\ \hline
 \bf light verbs &  'give', 'have', 'hold', 'make', 'take' &\\
 \hline
-\end{tabular}
-\end{center}
+\end{tabular}}
+\hfill{}
 \caption{\label{font-table} Words used as features for classifier. }
-\end{table}
+\end{table*}
+\end{center}
 
-We used an SVM classifier (libsvm) with these features on our sample of 500 words. With ten-fold cross-validation, the accuracy of the classifier was 76.4\%. By comparison, a baseline classifier that returns the majority class has an accuracy of 69.2\%. 
+\subsection{Results}
+
+We used an SVM classifier (libsvm) with these features on our sample of 500 words from the PPDB L corpus. With ten-fold cross-validation, the accuracy of the classifier was 76.4\%. By comparison, a baseline classifier that returns the majority class has an accuracy of 69.2\%. 
+
+\section{Using paraphrased MWEs for an NLP task}
+
+\subsection{Experimental design}
 
 To determine whether a lexicon of paraphrases extracted from the PPDB would be useful for the task of parsing, we took a sample of 33 paraphrases that fall into the categories described by \newcite{Sag2002} (verb particle, fixed expression, non-decomposable idiom, compound nominal, proper name, decomposable idiom, and light verb) from the random sample of 500 words. We then did a Google search to find a sentence containing the expansion, selecting sentences where the part of speech matched that of the paraphrase, by manual inspection. We restricted the sentences to those less than 50 words long. We then created an equivalent sentence by replacing the expansion with the one-word paraphrase. We used the online demo of the Berkeley parser \cite{petrov-EtAl:2006:COLACL} to parse these sentence pairs, and manually evaluated the resulting parse trees for each sentence of the pair.
 
+\subsection{Results}
+
 Of the 33 paraphrases sampled, 30 were correctly parsed using the one-word paraphrase, and 29 were correctly parsed using the expansion. 2 were parsed correctly for the one-word paraphrase but not for the expansion, 1 was parsed correctly for the expansion but not the one-word paraphrase, and 1 was parsed incorrectly for both. Figure \ref{avail} shows the trees for a case where the sentence containing the one-word paraphrase ("leverage") is parsed correctly, but the sentence containing the expansion ("avail myself of") is not. Figure \ref{avail} shows the trees for a case where the sentence containing the expansion ("leverage") is parsed correctly, but the sentence containing the one-word paraphrase ("avail myself of") is not. Figure \ref{issued} shows the trees for a case where the sentence containing the one-word paraphrase ("issued") is parsed correctly, but the sentence containing the expansion ("made available") is not. Figure \ref{place} shows the trees for a case where both sentences are parsed incorrectly.
 
-\begin{figure}
+\begin{figure*}
 \centering
 \begin{subfigure}{.5\textwidth}
   \centering
@@ -325,10 +364,10 @@ Of the 33 paraphrases sampled, 30 were correctly parsed using the one-word parap
 \end{subfigure}
 \caption{Parse trees for a sentence pair where substituting the single-word paraphrase for the MWE (in figure (b)) yields a better parse than the original sentence (in figure (a)).}
 \label{avail}
-\end{figure}
+\end{figure*}
 
 
-\begin{figure}
+\begin{figure*}
 \centering
 \begin{subfigure}{.5\textwidth}
   \centering
@@ -346,10 +385,10 @@ on the NHS.}
 \end{subfigure}
 \caption{Parse trees for a sentence pair where the original sentence (in figure (a)) yields a better parse than substituting the single-word paraphrase for the MWE (in figure (b)).}
 \label{issued}
-\end{figure}
+\end{figure*}
 
 
-\begin{figure}
+\begin{figure*}
 \centering
 \begin{subfigure}{.5\textwidth}
   \centering
@@ -366,7 +405,7 @@ on the NHS.}
 \end{subfigure}
 \caption{Parse trees for a sentence pair where the original sentence (in figure (a)) yields a better parse than substituting the single-word paraphrase for the MWE (in figure (a)).}
 \label{place}
-\end{figure}
+\end{figure*}
 
 %
 % We are not doing the following for Coling 2014. Maybe next time.
@@ -395,6 +434,5 @@ on the NHS.}
 \section*{Bibliography}
 \bibliographystyle{acl}
 \bibliography{acl2014}
-
 
 \end{document}

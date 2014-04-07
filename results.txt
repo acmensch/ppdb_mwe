@@ -1,0 +1,6 @@
+Verb-particle: 5/11 classified correctly
+fixed expressions: 0/6
+non-decomposable idiom: 0/2
+proper name: 4/7
+decomposable idiom: 1/4
+light verb: 1/4
