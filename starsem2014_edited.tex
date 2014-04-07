@@ -116,10 +116,10 @@ The Paraphrase Database (PPDB) is a database containing English paraphrases. PPD
 
 \section{Related Work}
 
-Various definitions of MWEs have been used for NLP tasks. Sag et al. define a taxonomy of multiword expressions that is widely used in computational MWE research. They define broad categories for MWEs (fixed expressions, semi-fixed expressions, syntactically flexible expressions, institutionalized phrases), and more specific categories within each of these. The following is a brief outline of the categories defined by Sag et al. that we investigate in this paper:
+Various definitions of MWEs have been used for NLP tasks. \newcite{Sag2002} define a taxonomy of multiword expressions that is widely used in computational MWE research. They define broad categories for MWEs (fixed expressions, semi-fixed expressions, syntactically flexible expressions, institutionalized phrases), and more specific categories within each of these. The following is a brief outline of their specific categories.   We use an expanded set of categories to analyze the MWEs found in PPDB in section \ref{analysis}.
 
 \begin{itemize}
-\item Fixed expressions. These are expressions that don't fit standard grammatical rules and are not compositional. An exampleis the phrase ``all of a sudden," which means ``suddenly." The meaning of the entire phrase is not the same as the individual words in the phrase, meaning it is not compositional. Furthermore, it does not follow standard grammar rules, which can be seen by replacing the word sudden, normally an adjective, with another adjective: ``all of a happy" is nonsensical. Some other examples are ``in short" and ``kingdom come" \cite{Sag2002}.
+\item Fixed expressions. These are expressions that don't fit standard grammatical rules and are not compositional. An exampleis the phrase ``all of a sudden," which means ``suddenly." The meaning of the entire phrase is not the same as the individual words in the phrase, meaning it is not compositional. Furthermore, it does not follow standard grammar rules, which can be seen by replacing the word sudden, normally an adjective, with another adjective: ``all of a happy" is nonsensical. Some other examples are ``in short" and ``kingdom come"
 
 \item Non-decomposable idioms. These are expressions that follow grammatical rules, but whose meaning is not compositional. An example is ``kick the bucket," where the grammatical structure is valid (e.g., ``kick the stone," which has the same grammatical structure, is an acceptable English phrase), but the meaning of the phrase is not the meaning the sum of its parts. Other examples include ``to take the bull by the horns" and ``to beat swords into plowshares." (Nunberg, Sag, Wasow).***
 
@@ -136,7 +136,7 @@ Various definitions of MWEs have been used for NLP tasks. Sag et al. define a ta
 
 Other work has described a division of MWEs extracted from paraphrases: one-to-many, many-to-one,  decomposable and non-decomposable \cite{dpm}. They also investigated using paraphrases to automatically extract multiword expressions. \cite{dpm} consider dependency-based paraphrases and parallel corpora-based paraphrases as sources for MWEs, finding that 34\% of the MWEs in the MSR manual word alignments of the RTE 2006 corpus were present in these resources (Brockett, 2007). 
 
-\section{Analysis of PPDB}
+\section{Analysis of PPDB}\label{analysis}
 The Paraphrases Database (PPDB) contains English paraphrases. We have characterized a subset of the paraphrases found in the PPDB, according to categories of multi-word expressions (MWEs), syntactic changes in the expansion from a word to its paraphrase, and what parts of speech appear in the corpus. We also looked at how many of the paraphrases in the PPDB appear to be spurious.
 
 The categories of MWEs we looked at were light verbs, verb-particle constructions, negation, and superlatives. We also included the categories for MWEs described in Sag et al: fixed expressions, non-decomposable idioms, compound nominals, proper names, and decomposable idioms. 
