@@ -143,35 +143,45 @@ The Paraphrases Database (PPDB) contains English paraphrases. We have characteri
 The categories of MWEs we looked at were light verbs, verb-particle constructions, negation, and superlatives. We also included the categories for MWEs described in Sag et al: fixed expressions, non-decomposable idioms, compound nominals, proper names, and decomposable idioms. 
 
 While categorizing the paraphrases we found that paraphrases sometimes did not fall under the classic MWE categories, but they were valid paraphrases because of a change in syntax between the two phrases, or because of some other known relationship between paraphrases (e.g., acronyms). Therefore, in addition to the MWE categories, we also included the following categories for syntactic changes from a word to its paraphrase: 
-Change of tense followed by a paraphrase. Paraphrases in this category both rephrased the original word and changed the tense of the phrase. An example is the pair ``say", ``going to tell". 
-Nominalizations. Paraphrases in this category had one of the phrases as a noun form of a verb. Two examples are ``a monopoly" and ``monopolization", and ``operation" and  ``proper functioning." 
-Infinitival to. Paraphrases in this category had the infinitival form a verb as the expansion, and either the same verb or one with similar meaning as the one-word paraphrase. One example is ``answer," ``to reply."
-Adverbial modifier. Paraphrases in this category had either the original word or a word with similar meaning, plus an adverbial modifier. Two examples are ``interesting", ``very interesting," and ``teeny", ``really little."
-One or more words the same as part of the original word. This category captures paraphrases where some of the paraphrase is the same as some of the original word, but it is not simply the original word with additional modifiers. This category is meant to capture paraphrases that are lexicographically related to each other even if the original word is not a substring of the paraphrase. Some examples of this category are ``anytime", ``any point," and ``vice-president," ``the deputy president."
-Determiner followed by a one-word paraphrase. Paraphrases in this category map one word to a phrase consisting of a determiner followed by a one-word paraphrase of the original word. Some examples are ``photographs," ``the images," and ``mist," ``the smoke."
-Determiner followed by the singular form. This category captures paraphrases where the original word is a plural, and the expansion is a phrase consisting of a determiner followed by the singular form of the original word. Some examples are ``sounds," ``the sound" and ``loans," ``a loan."
-Change of tense. Paraphrases in this category have the same verb in both the original word and its expansion, but the tense is changed. Some examples are ``changing," ``be changed," and ``attain", ``be attained."
+\begin{itemize}
+\item Change of tense followed by a paraphrase. Paraphrases in this category both rephrased the original word and changed the tense of the phrase. An example is the pair ``say", ``going to tell". 
 
+\item Nominalizations. Paraphrases in this category had one of the phrases as a noun form of a verb. Two examples are ``a monopoly" and ``monopolization", and ``operation" and  ``proper functioning." 
+
+\item Infinitival to. Paraphrases in this category had the infinitival form a verb as the expansion, and either the same verb or one with similar meaning as the one-word paraphrase. One example is ``answer," ``to reply."
+
+\item Adverbial modifier. Paraphrases in this category had either the original word or a word with similar meaning, plus an adverbial modifier. Two examples are ``interesting", ``very interesting," and ``teeny", ``really little."
+
+\item One or more words the same as part of the original word. This category captures paraphrases where some of the paraphrase is the same as some of the original word, but it is not simply the original word with additional modifiers. This category is meant to capture paraphrases that are lexicographically related to each other even if the original word is not a substring of the paraphrase. Some examples of this category are ``anytime", ``any point," and ``vice-president," ``the deputy president."
+
+\item Determiner followed by a one-word paraphrase. Paraphrases in this category map one word to a phrase consisting of a determiner followed by a one-word paraphrase of the original word. Some examples are ``photographs," ``the images," and ``mist," ``the smoke."
+
+\item Determiner followed by the singular form. This category captures paraphrases where the original word is a plural, and the expansion is a phrase consisting of a determiner followed by the singular form of the original word. Some examples are ``sounds," ``the sound" and ``loans," ``a loan."
+
+\item Change of tense. Paraphrases in this category have the same verb in both the original word and its expansion, but the tense is changed. Some examples are ``changing," ``be changed," and ``attain", ``be attained."
+\end{itemize}
 The following non-syntactic categories were motivated by the examples in the random sample:
+
 \begin{itemize}
 
-\item \textbf{Acronyms.} This category captures paraphrases where one or both of the entries in a paraphrase pair are acronyms. Sometimes the acronym is expanded (e.g., ``hm," ``her majesty"), and sometimes the expansion contains a different acronym (e.g., ``cmf," ``the fcm").
+\item Acronyms. This category captures paraphrases where one or both of the entries in a paraphrase pair are acronyms. Sometimes the acronym is expanded (e.g., ``hm," ``her majesty"), and sometimes the expansion contains a different acronym (e.g., ``cmf," ``the fcm").
 
-\item \textbf{Hypernym-hyponym pairs.} This category was included to capture paraphrases where either the original word was a hypernym of the paraphrase, or vice versa. There were no instances in the random sample.
+\item Hypernym-hyponym pairs. This category was included to capture paraphrases where either the original word was a hypernym of the paraphrase, or vice versa. There were no instances in the random sample.
 
-\item \textbf{Times.} Paraphrases in this category were contained either times (e.g., ``7:00," ``seven hours") or dates (``2003/04," ``the 2003-04 fiscal year") in either the original word or the paraphrase.
+\item Times. Paraphrases in this category were contained either times (e.g., ``7:00," ``seven hours") or dates (``2003/04," ``the 2003-04 fiscal year") in either the original word or the paraphrase.
 
-\item \textbf{Extra punctuation marks.} This category captures paraphrases where either the original word or the expansion contains a punctuation mark (e.g., apostrophe or hyphen), which is what causes the word to be interpreted as a single word (e.g., ``debt-servicing," ``debt servicing") or the expansion to be interpreted as having multiple words (e.g., ``what," ``somethin ' ").
+\item  Extra punctuation marks. This category captures paraphrases where either the original word or the expansion contains a punctuation mark (e.g., apostrophe or hyphen), which is what causes the word to be interpreted as a single word (e.g., ``debt-servicing," ``debt servicing") or the expansion to be interpreted as having multiple words (e.g., ``what," ``somethin ' ").
 
-\item \textbf{Numbers.} Paraphrases in this category contain number in either the original word or its expansion. Some examples are ``20," ``twenty of," and ``5,000," ``5 000."
+\item Numbers. Paraphrases in this category contain number in either the original word or its expansion. Some examples are ``20," ``twenty of," and ``5,000," ``5 000."
 
 \end{itemize}
 
 Finally, we defined categories to capture paraphrases that did not fall under the classic MWE, syntactic change, or non-syntactic categories.
 \begin{itemize}
-\item \textbf{Unspecified expansions.} These paraphrases do not fall under any of the other paraphrase categories defined until now. 
+\item Unspecified expansions. These paraphrases do not fall under any of the other paraphrase categories defined until now. 
 
-\item \textbf{Bad paraphrases.} These are paraphrases where the original word and the expansion do not seem to be related in any way, or where there is no context where the expansion could be replaced by the original word. 
+\item Bad paraphrases. These are paraphrases where the original word and the expansion do not seem to be related in any way, or where there is no context where the expansion could be replaced by the original word. 
+\end{itemize}
 
 PPDB is released in a series of files. The different files are divided into one-to-one (synonyms), one-to-many, many-to-many, phrasal, and syntactic files. The lexical paraphrases are from one word to one word, the one-to-many are paraphrases between one word and a multi-word expression, many-to-many paraphrases are paraphrases between two multiword expressions, and syntactic paraphrases are paraphrases are those where the syntactic category is the same for both a phrase and its paraphrase. For this analysis we investigate the one-to-many paraphrase file as a source of potential paraphrases for multiword expressions.
 
@@ -272,7 +282,7 @@ To find instances of verb-particle constructions, we searched for the regular ex
 
 We then determined manually whether the phrases found were verb-particle constructions. The potential particle was sometimes a preposition or adverb, in which case it did not fit into this MWE category. 
 
-We used similar commands to find instances of the other paraphrase categories. A list of the commands used is in the following table:
+We used similar commands to find instances of the other paraphrase categories. A list of the commands used is in Table \ref{grep}:
 
 \begin{center}
 \begin{table*}[h]
@@ -287,11 +297,11 @@ superlatives & grep '\textbackslash b most ' ppdb\textunderscore filename &\\
 \hline
 \end{tabular}
 \hfill{}
-\caption{\label{font-table} Linux commands to search for paraphrases of different types. }
+\caption{\label{grep} Linux commands to search for paraphrases of different types. }
 \end{table*}
 \end{center}
 
-The results from these searches are summarized in the tables below. We considered only light verb phrases with no extra terms (e.g., 'have a word', but not 'have a word with you' or 'can i have a word').
+The results from these searches are summarized in the Tables \ref{light-verbs} and \ref{verb-particle}. We considered only light verb phrases with no extra terms (e.g., 'have a word', but not 'have a word with you' or 'can i have a word').
 
 \begin{center}
 \begin{table*}
@@ -332,7 +342,7 @@ over & 65 & 67 \\
 \hline
 \end{tabular}
 \end{center}
-\caption{\label{font-table} Verb-particle constructions. }
+\caption{\label{verb-particle} Verb-particle constructions. }
 \end{table*}
 
 Among the 500 paraphrases in the sample, 37 fell into the category of interesting MWEs. Since the PPDB L one-to-many corpus contains 188,000 rules, based on our sample, we expect there to be around 14,000 relevant MWEs in the database.
@@ -347,7 +357,7 @@ We designed features tailored to find paraphrases in the following categories of
 
 The features we used were whether a preposition appeared in the expansion of the paraphrase (feature value either 1 or 0), whether the original word appeared in the expansion, whether a light verb appeared in the expansion, and all of the scores from the PPDB (every number that appeared in the entry following an equal sign).
 
-The prepositions and light verbs used for the features are listed in the table below.
+The prepositions and light verbs used for the features are listed in Table \ref{features}.
 
 \begin{center}
 \begin{table*}
@@ -359,7 +369,7 @@ The prepositions and light verbs used for the features are listed in the table b
 \hline
 \end{tabular}}
 \hfill{}
-\caption{\label{font-table} Words used as features for classifier. }
+\caption{\label{features} Words used as features for classifier. }
 \end{table*}
 \end{center}
 
@@ -371,11 +381,13 @@ We used an SVM classifier (libsvm) with these features on our sample of 500 word
 
 \subsection{Experimental design}
 
-To determine whether a lexicon of paraphrases extracted from the PPDB would be useful for the task of parsing, we took a sample of 33 paraphrases that fall into the categories described by \newcite{Sag2002} (verb particle, fixed expression, non-decomposable idiom, compound nominal, proper name, decomposable idiom, and light verb) from the random sample of 500 words. We then did a Google search to find a sentence containing the expansion, selecting sentences where the part of speech matched that of the paraphrase, by manual inspection. We restricted the sentences to those less than 50 words long. We then created an equivalent sentence by replacing the expansion with the one-word paraphrase. We used the online demo of the Berkeley parser \cite{petrov-EtAl:2006:COLACL} to parse these sentence pairs, and manually evaluated the resulting parse trees for each sentence of the pair.
+To determine whether a lexicon of paraphrases extracted from the PPDB would be useful for the task of parsing, we took a sample of 33 paraphrases that fall into the categories described by \newcite{Sag2002} (verb particle, fixed expression, non-decomposable idiom, compound nominal, proper name, decomposable idiom, and light verb), as well as one paraphrase from each of the other categories from the random sample of 500 words. We then did a Google search to find a sentence containing the expansion, selecting sentences where the part of speech matched that of the paraphrase, by manual inspection. We restricted the sentences to those less than 50 words long. We then created an equivalent sentence by replacing the expansion with the one-word paraphrase. We used the online demo of the Berkeley parser \cite{petrov-EtAl:2006:COLACL} to parse these sentence pairs, and manually evaluated the resulting parse trees for each sentence of the pair.
 
 \subsection{Results}
 
-Of the 33 paraphrases sampled, 30 were correctly parsed using the one-word paraphrase, and 29 were correctly parsed using the expansion. 2 were parsed correctly for the one-word paraphrase but not for the expansion, 1 was parsed correctly for the expansion but not the one-word paraphrase, and 1 was parsed incorrectly for both. Figure \ref{avail} shows the trees for a case where the sentence containing the one-word paraphrase ("leverage") is parsed correctly, but the sentence containing the expansion ("avail myself of") is not. Figure \ref{avail} shows the trees for a case where the sentence containing the expansion ("leverage") is parsed correctly, but the sentence containing the one-word paraphrase ("avail myself of") is not. Figure \ref{issued} shows the trees for a case where the sentence containing the one-word paraphrase ("issued") is parsed correctly, but the sentence containing the expansion ("made available") is not. Figure \ref{place} shows the trees for a case where both sentences are parsed incorrectly.
+Of the 33 paraphrases sampled from MWE categories, 30 were correctly parsed using the one-word paraphrase, and 29 were correctly parsed using the expansion. 2 were parsed correctly for the one-word paraphrase but not for the expansion, 1 was parsed correctly for the expansion but not the one-word paraphrase, and 1 was parsed incorrectly for both. Figure \ref{avail} shows the trees for a case where the sentence containing the one-word paraphrase ("leverage") is parsed correctly, but the sentence containing the expansion ("avail myself of") is not. Figure \ref{avail} shows the trees for a case where the sentence containing the expansion ("leverage") is parsed correctly, but the sentence containing the one-word paraphrase ("avail myself of") is not. Figure \ref{issued} shows the trees for a case where the sentence containing the one-word paraphrase ("issued") is parsed correctly, but the sentence containing the expansion ("made available") is not. Figure \ref{place} shows the trees for a case where both sentences are parsed incorrectly.
+
+Of the 18 other paraphrases sampled, all were parsed correctly in their original form, while 15 were parsed correctly using the one-word paraphrase. 
 
 \begin{figure*}
 \centering
