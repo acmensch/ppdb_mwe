@@ -57,7 +57,8 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-We investigate whether paraphrases might be a useful resource for understanding multiword expressions (MWEs).  In particular, we analyze the paraphrases in PPDB, the Paraphrase Database, where multiple words are re-written as a single word.  By automatically mapping from multiword expressions onto single words, NLP systems could potentially process the re-written text more easily than the original text containing MWEs. We use the MWE categorization system as described in \newcite{Sag2002}.  Although a small proportion of the many-to-one paraphrases in PPDB are classic MWEs, the resource contains millions of entries.  We therefore train a classifier to distinguish interesting MWEs from other sorts of many-to-one paraphrases.
+We investigate whether paraphrases might be a useful resource for understanding multiword expressions (MWEs).  In particular, we analyze the paraphrases in PPDB, the Paraphrase Database, where multiple words are re-written as a single word.  By automatically mapping from multiword expressions onto single words, NLP systems could potentially process the re-written text more easily than the original text containing MWEs. We use the MWE categorization system as described in \newcite{Sag2002} to categorize paraphrases that might be interesting to MWE researchers.  Although only a relatively small proportion of the many-to-one paraphrases in PPDB are classic MWEs, the resource contains millions of entries.  We therefore train a classifier to distinguish interesting MWEs from other sorts of many-to-one paraphrases. We also do a pilot study on parsing paraphrased sentences, to determine whether sentences with a MWE replaced by its paraphrase are parsed correctly more often than the original sentences.
+
 \end{abstract}
 
 \section{Introduction}
@@ -99,7 +100,7 @@ We investigate whether paraphrases might be a useful resource for understanding 
     % \url{http://creativecommons.org/licenses/by/4.0/}
 }
 
-Multiword expressions (MWEs) are phrases whose meanings are different than the literal interpretation of the words in the phrase. MWEs include verb-particle constructions, fixed expressions, compound nominals, and decomposable idioms, to name a few \cite{Sag2002}.  MWEs are difficult to process both for non-native speakers of English, as well as for NLP systems. Studies using an eye-movement paradigm have found that non-native speakers of English required more time to retrieve figurative senses of phrases than literal ones, whereas native speakers retrieved the idiomatic meaning faster than the literal meaning \cite{siyanova-chanturia-martinez:2014}. These studies imply that L2 speakers of English may find it more difficult to understand MWEs than a similar phrase whose meaning was literal.  Among NLP systems, both parsers and information retrieval systems make errors on MWEs. As described by \newcite{Villavicencio2007}, \newcite{Baldwin2004} found that, among a random sample of 20,000 strings from the written portion of the British National Corpus \cite{Burnard2000}, using the English Resource Grammar \cite{Copestake+Flickinger2000}, MWEs caused 8\% of all parse errors. When manually selected compound nominals were searched for as single terms it improved information retrieval results \cite{Acosta2011}.
+Multiword expressions (MWEs) are phrases whose meanings are different than the literal interpretation of the words in the phrase. MWEs include verb-particle constructions, fixed expressions, compound nominals, and decomposable idioms, to name a few \cite{Sag2002}.  MWEs are difficult to process both for non-native speakers of English, as well as for NLP systems. Studies using an eye-movement paradigm have found that non-native speakers of English required more time to retrieve figurative senses of phrases than literal ones, whereas native speakers retrieved the idiomatic meaning faster than the literal meaning \cite{siyanova-chanturia-martinez:2014}. These studies imply that L2 speakers of English may find it more difficult to understand MWEs than a similar phrase whose meaning was literal.  Among NLP systems, both parsers and information retrieval systems make errors on MWEs. \newcite{Baldwin20042} found that, among a random sample of 20,000 strings from the written portion of the British National Corpus \cite{Burnard2000}, using the English Resource Grammar \cite{Copestake+Flickinger2000}, MWEs caused 8\% of all parse errors. When manually selected compound nominals were searched for as single terms it improved information retrieval results \cite{Acosta2011}.
 
 Because MWEs are challenging for many NLP tasks, automatically identifying them could be useful for identifying and averting errors.  Several research efforts have examined this topic.  For example, \newcite{muzny-zettlemoyer:2013:EMNLP} built a classifier to identify idioms, and \newcite{li-sporleder:2010:NAACLHLT} use Gaussian Mixture Models to identify new idioms.  In this paper, we use the Paraphrase Database (PPDB) as a resource to define a MWE lexicon, which could be incorporated into other NLP systems.  In addition to being a potentially useful resource for {\it identifying} MWEs, it has the unique feature of potentially giving an {\it interpretation} of the MWEs by replacing them with a one word paraphrase.  
 
@@ -112,7 +113,7 @@ In this paper we
 
 \section{The Paraphrase Database}
 
-The Paraphrase Database (PPDB) is a database containing English paraphrases. PPDB was developed using alignment techniques from machine translation on bilingual parallel corpora, pivoting on a foreign language, to find English phrases that translate to the same foreign-language phrase \newcite{bannard-callisonburch:2005:ACL}. The database takes into account syntactic information of both the English and foreign-language phrases: the entries in PPDB were found using SCFGs to come up with paraphrases that form constituents of the same syntactic category \cite{ganitkevitch-EtAl:2011:EMNLP,ganitkevitch-vandurme-callisonburch:2013:NAACL-HLT}.
+The Paraphrase Database (PPDB) is a database containing English paraphrases. PPDB was developed using alignment techniques from machine translation on bilingual parallel corpora, pivoting on a foreign language, to find English phrases that translate to the same foreign-language phrase \cite{bannard-callisonburch:2005:ACL}. The database takes into account syntactic information of both the English and foreign-language phrases: the entries in PPDB were found using SCFGs to come up with paraphrases that form constituents of the same syntactic category \cite{ganitkevitch-EtAl:2011:EMNLP,ganitkevitch-vandurme-callisonburch:2013:NAACL-HLT}.
 
 \section{Related Work}
 
@@ -123,15 +124,15 @@ Various definitions of MWEs have been used for NLP tasks. \newcite{Sag2002} defi
 
 \item Non-decomposable idioms. These are expressions that follow grammatical rules, but whose meaning is not compositional. An example is ``kick the bucket," where the grammatical structure is valid (e.g., ``kick the stone," which has the same grammatical structure, is an acceptable English phrase), but the meaning of the phrase is not the meaning the sum of its parts. Other examples include ``to take the bull by the horns" and ``to beat swords into plowshares." (Nunberg, Sag, Wasow).***
 
-\item Compoun nominal. These are noun combinations whose meaning is different than the individual nouns in the phrase. An example is ``orange juice," where the meaning is juice from an orange. Other examples are ``hand lotion," ``street sign," and ``newspaper column." The relationship between the nouns in the compound nominal cannot be deduced from their order in the phrase (orange juice is the juice from an orange, whereas hand lotion is lotion intended for hands).
+\item Compoun nominal. These are noun combinations whose meaning is not automatically inferrable the individual nouns in the phrase. An example is ``orange juice," where the meaning is juice from an orange. Other examples are ``hand lotion," ``street sign," and ``newspaper column." The relationship between the nouns in the compound nominal cannot be deduced from their order in the phrase (orange juice is the juice from an orange, whereas hand lotion is lotion intended for hands).
 
 \item Proper nouns. These are nouns that are names for unique entities. Some examples are places (California, the Bronx), people (President Roosevelt), and events (the Industrial Revolution). This category is included in the taxonomy because names allow for some kinds of variation but not others. For example, the San Francisco 49ers, the 49ers, and 49ers are all valid names for the sports team, but ``the Oakland 49ers" is not (because it is the wrong city).
 
-\item Decomposable idioms. These are phrases whose meaning is a combination of the meanings of the words they comprise. One example is the idiom ``play with fire" (Wikipedia)***, whose meaning can be derived from the meaning of the individual words, but nonetheless has an idiomatic meaning. Furthermore, decomposable idioms can undergo syntactic changes, but the extent to which they can change depends on the particular idiom. For example, the phrase ``let the cat out of the bag" can be modified to ``the cat was out of the bag," but also to ``the cat was really out of the bag," adding an adverb. On the other hand, ``keep tabs on" can be modified to ``keep tabs of,"  which is a change in the preposition of the phrase \cite{Riehemann01aconstructional}. 
+\item Decomposable idioms. These are phrases whose meaning is a combination of the meanings of the words they comprise. One example is the idiom ``play with fire" (Wikipedia)***, whose meaning can be derived from the meaning of the individual words, but nonetheless has an idiomatic meaning. Furthermore, decomposable idioms can undergo syntactic changes, but the extent to which they can change depends on the particular idiom. For example, the phrase ``let the cat out of the bag" can be modified to ``the cat was out of the bag," but also to ``the cat was \textit{really} out of the bag," adding an adverb. On the other hand, ``keep tabs on" can be modified to ``keep tabs of,"  which is a change in the preposition of the phrase \cite{Riehemann01aconstructional}. 
 
 \item Verb-particle constructions. These are verb phrases formed of a verb followed by a particle, where the meaning of the phrase is different than that of the verb alone, or up the verb and the particle combined. Some examples are ``wash out," ``break down," and ``follow up." 
 
-\item Light verbs. These are verb phrases formed of a light verb (make, give, have), followed by a noun phrase. Some examples are ``make a compromise," ``give a presentation," and ``have a rest." The verb of the phrase is inflected to change tense ("made a compromise"). The particular verb that a given light verb phrase will use is difficult to predict from the original verb. For example, ``to walk" can be put as a xpansion,  phrase, ``to take a walk," but not ``to make a walk," whereas ``to make a presentation" is fine and ``to take a presentation" nonsensical.
+\item Light verbs. These are verb phrases formed of a light verb (make, give, have), followed by a noun phrase. Some examples are ``make a compromise," ``give a presentation," and ``have a rest." The verb of the phrase is inflected to change tense ("made a compromise"). The particular verb that a given light verb phrase will use is difficult to predict from the original verb. For example, ``to walk" can be put as an expansion,  phrase, ``to take a walk," but not ``to make a walk," whereas ``to make a presentation" is fine and ``to take a presentation" nonsensical.
 \end{itemize}
 
 Other work has described a division of MWEs extracted from paraphrases: one-to-many, many-to-one,  decomposable and non-decomposable \cite{dpm}. They also investigated using paraphrases to automatically extract multiword expressions. \cite{dpm} consider dependency-based paraphrases and parallel corpora-based paraphrases as sources for MWEs, finding that 34\% of the MWEs in the MSR manual word alignments of the RTE 2006 corpus were present in these resources (Brockett, 2007). 
@@ -141,7 +142,36 @@ The Paraphrases Database (PPDB) contains English paraphrases. We have characteri
 
 The categories of MWEs we looked at were light verbs, verb-particle constructions, negation, and superlatives. We also included the categories for MWEs described in Sag et al: fixed expressions, non-decomposable idioms, compound nominals, proper names, and decomposable idioms. 
 
-In addition to MWE categories, we also included categories for syntactic changes from a word to its paraphrase: change of tense followed by a paraphrase, nominalizations, infinitival to, adverbial modifier, one or more words the same as part of the original word, determiner followed by a one-word paraphrase, determiner followed by the plural form, and change of tense. Finally, we included acronyms, hypernym-hyponym pairs, times, extra punctuation marks, and numbers as categories, as well as unspecified expansions and bad paraphrases. 
+While categorizing the paraphrases we found that paraphrases sometimes did not fall under the classic MWE categories, but they were valid paraphrases because of a change in syntax between the two phrases, or because of some other known relationship between paraphrases (e.g., acronyms). Therefore, in addition to the MWE categories, we also included the following categories for syntactic changes from a word to its paraphrase: 
+Change of tense followed by a paraphrase. Paraphrases in this category both rephrased the original word and changed the tense of the phrase. An example is the pair ``say", ``going to tell". 
+Nominalizations. Paraphrases in this category had one of the phrases as a noun form of a verb. Two examples are ``a monopoly" and ``monopolization", and ``operation" and  ``proper functioning." 
+Infinitival to. Paraphrases in this category had the infinitival form a verb as the expansion, and either the same verb or one with similar meaning as the one-word paraphrase. One example is ``answer," ``to reply."
+Adverbial modifier. Paraphrases in this category had either the original word or a word with similar meaning, plus an adverbial modifier. Two examples are ``interesting", ``very interesting," and ``teeny", ``really little."
+One or more words the same as part of the original word. This category captures paraphrases where some of the paraphrase is the same as some of the original word, but it is not simply the original word with additional modifiers. This category is meant to capture paraphrases that are lexicographically related to each other even if the original word is not a substring of the paraphrase. Some examples of this category are ``anytime", ``any point," and ``vice-president," ``the deputy president."
+Determiner followed by a one-word paraphrase. Paraphrases in this category map one word to a phrase consisting of a determiner followed by a one-word paraphrase of the original word. Some examples are ``photographs," ``the images," and ``mist," ``the smoke."
+Determiner followed by the singular form. This category captures paraphrases where the original word is a plural, and the expansion is a phrase consisting of a determiner followed by the singular form of the original word. Some examples are ``sounds," ``the sound" and ``loans," ``a loan."
+Change of tense. Paraphrases in this category have the same verb in both the original word and its expansion, but the tense is changed. Some examples are ``changing," ``be changed," and ``attain", ``be attained."
+
+The following non-syntactic categories were motivated by the examples in the random sample:
+\begin{itemize}
+
+\item \textbf{Acronyms.} This category captures paraphrases where one or both of the entries in a paraphrase pair are acronyms. Sometimes the acronym is expanded (e.g., ``hm," ``her majesty"), and sometimes the expansion contains a different acronym (e.g., ``cmf," ``the fcm").
+
+\item \textbf{Hypernym-hyponym pairs.} This category was included to capture paraphrases where either the original word was a hypernym of the paraphrase, or vice versa. There were no instances in the random sample.
+
+\item \textbf{Times.} Paraphrases in this category were contained either times (e.g., ``7:00," ``seven hours") or dates (``2003/04," ``the 2003-04 fiscal year") in either the original word or the paraphrase.
+
+\item \textbf{Extra punctuation marks.} This category captures paraphrases where either the original word or the expansion contains a punctuation mark (e.g., apostrophe or hyphen), which is what causes the word to be interpreted as a single word (e.g., ``debt-servicing," ``debt servicing") or the expansion to be interpreted as having multiple words (e.g., ``what," ``somethin ' ").
+
+\item \textbf{Numbers.} Paraphrases in this category contain number in either the original word or its expansion. Some examples are ``20," ``twenty of," and ``5,000," ``5 000."
+
+\end{itemize}
+
+Finally, we defined categories to capture paraphrases that did not fall under the classic MWE, syntactic change, or non-syntactic categories.
+\begin{itemize}
+\item \textbf{Unspecified expansions.} These paraphrases do not fall under any of the other paraphrase categories defined until now. 
+
+\item \textbf{Bad paraphrases.} These are paraphrases where the original word and the expansion do not seem to be related in any way, or where there is no context where the expansion could be replaced by the original word. 
 
 PPDB is released in a series of files. The different files are divided into one-to-one (synonyms), one-to-many, many-to-many, phrasal, and syntactic files. The lexical paraphrases are from one word to one word, the one-to-many are paraphrases between one word and a multi-word expression, many-to-many paraphrases are paraphrases between two multiword expressions, and syntactic paraphrases are paraphrases are those where the syntactic category is the same for both a phrase and its paraphrase. For this analysis we investigate the one-to-many paraphrase file as a source of potential paraphrases for multiword expressions.
 
@@ -238,8 +268,7 @@ In both samples, the most common part of speech is NP, followed by VP.
 
 In addition to categorizing a random sample of paraphrases, we searched for instances of light verbs, verb-particle constructions, negation, comparatives, and superlatives. The light verbs were those with the verb “have”, “take”, “make”, “hold” or “give, ” followed by a noun phrase. The verb-particle constructions were any verbs followed by the particles “down”, “up”, “on”, “out”, “over” or “upon.” Negation instances had the word “not” either in the original or the expanded paraphrase. Comparatives had the word “more,” and superlatives had the word “most.”
 
-To find instances of verb-particle constructions, we used the Linux command 'grep' and the regular expression ' particle\b' to find phrases where the potential particle was not the first word, and to ensure that it was not a substring of another word (e.g., 'onto' instead of 'on'). For example, to find potential instances of verb-particle constructions with the particle 'up', we ran the following command:
-grep ' up\b' ppdb-1.0-l-o2m
+To find instances of verb-particle constructions, we searched for the regular expression ' particle\b' to find phrases where the potential particle was not the first word, and to ensure that it was not a substring of another word (e.g., 'onto' instead of 'on'). For example, to find potential instances of verb-particle constructions with the particle 'up', we searched for the following regular expression:' up\b'.
 
 We then determined manually whether the phrases found were verb-particle constructions. The potential particle was sometimes a preposition or adverb, in which case it did not fit into this MWE category. 
 
@@ -306,7 +335,7 @@ over & 65 & 67 \\
 \caption{\label{font-table} Verb-particle constructions. }
 \end{table*}
 
-Among the 500 paraphrases in the sample, 37 fell into the category of interesting MWEs. Since the PPDB L one-to-many corpus contains 188,000 rules, based on our sample, we expect there to be around 14,000 relevant MWEs in the corpus.
+Among the 500 paraphrases in the sample, 37 fell into the category of interesting MWEs. Since the PPDB L one-to-many corpus contains 188,000 rules, based on our sample, we expect there to be around 14,000 relevant MWEs in the database.
 
 \section{Building a classifier for MWEs in PPDB}
 
