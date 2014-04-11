@@ -125,6 +125,13 @@ In this paper we
 
 In this paper, we analyze paraphrases within the Paraphrase Database (PPDB) \cite{ganitkevitch-vandurme-callisonburch:2013:NAACL-HLT}, currently the largest available collection of paraphrases.  Compared to other paraphrase resources such as the DIRT database (12 million rules) \cite{lin2001dirt} and the MSR paraphrase phrase table (13 million) \cite{dolan2004unsupervised}, PPDB contains over 150 million paraphrase rules. These rules were extracted automatically using \newcite{bannard-callisonburch:2005:ACL}'s ``bilingual pivoting'' method, in which two English phrases are assumed to be paraphrases if they both translate to the same foreign phrase.  This is illustrated in Figure \ref{bilingual-pivoting}.
 
+PPDB has several types of paraphrases: one-to-one (synonyms), one-to-many, many-to-many phrasal paraphrases, and syntactic transformations. In this paper we examine the one-to-many paraphrases, since we wanted to analyze whether these paraphrases would be a suitable resource for interpreting multi-word expressions.  
+Many-to-many paraphrases might be interesting for examining interpretations of other MWEs like noun-noun compounds (e,g. if ``hand lotion'' paraphrased  to ``lotion for hands" or ``apple juice'' paraphrased to ``juice made from apples''). The syntactic paraphrases might also give hints at 
+the level of syntactic fixedness of idioms, for instance. 
+For this analysis we investigate only the one-to-many paraphrases as a source of potential paraphrases for multiword expressions.
+
+The PPDB is distributed as a set of increasingly large files, from Small to XXXL (six sizes). Each paraphrase in the PPDB is scored according to how precise of a paraphrase it is likely to be. The smaller files contain better-scoring paraphrases, while the larger files contain incrementally more paraphrases, at the cost of precision. For this analysis we chose the Large corpus as a compromise point among the various sizes for both coverage and quality of paraphrases.  PPDB-Large contains 188,000 one-to-many paraphrases, and PPDB-XXXL contains 1.5 million of such paraphrases. 
+
 
 %The Paraphrase Database (PPDB) is a database containing English paraphrases. PPDB was developed using alignment techniques from machine translation on bilingual parallel corpora, pivoting on a foreign language, to find English phrases that translate to the same foreign-language phrase \cite{bannard-callisonburch:2005:ACL}. The database takes into account syntactic information of both the English and foreign-language phrases: the entries in PPDB were found using SCFGs to come up with paraphrases that form constituents of the same syntactic category \cite{ganitkevitch-EtAl:2011:EMNLP,ganitkevitch-vandurme-callisonburch:2013:NAACL-HLT}.
 
@@ -202,9 +209,6 @@ Finally, we defined categories to capture paraphrases that did not fall under th
 \item Bad paraphrases. These are paraphrases where the original word and the expansion do not seem to be related in any way, or where there is no context where the expansion could be replaced by the original word. 
 \end{itemize}
 
-PPDB is released in a series of files. The different files are divided into one-to-one (synonyms), one-to-many, many-to-many, phrasal, and syntactic files. The lexical paraphrases are from one word to one word, the one-to-many are paraphrases between one word and a multi-word expression, many-to-many paraphrases are paraphrases between two multiword expressions, and syntactic paraphrases are paraphrases are those where the syntactic category is the same for both a phrase and its paraphrase. For this analysis we investigate the one-to-many paraphrase file as a source of potential paraphrases for multiword expressions.
-
-The PPDB files are further subdivided by size, from S to XXXL (six sizes). Each paraphrase in the PPDB is scored according to how precise of a paraphrase it is likely to be. The smaller files contain better-scoring paraphrases, while the larger files contain incrementally more paraphrases, at the cost of precision. For this analysis we chose the L corpus as a compromise point among the various sizes for both coverage and quality of paraphrases.
 
 Of a random sample of 500 paraphrases from the L one-to-many paraphrase file, the most common types of paraphrase were expansions using the same morphological form (117 instances, or 23.4\%), determiner followed by a one-word paraphrase (86 instances, or 17.2\%), and paraphrases that did not fall into a particular category (62 instances, or 12.4\%). Of the sample, 43 were bad paraphrases (8.6\%). The full list of categories and the number of instances in each are in the table below.  
 
