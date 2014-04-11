@@ -294,8 +294,8 @@ alternate spelling & 1 & al-najaf, al nagaf\\
 \begin{table*}
 \hfill{}
 \begin{tabular}{|l|l|l|p{.5\linewidth}|}
-\hline \bf Light verb & \bf Number of  & \bf Number  & \bf Example matches, and their paraphrases\\ 
- & \bf verb phrases & \bf manually categorized & \\ 
+\hline \bf Light verb & \bf Manually  & \bf Number  & \bf Example matches, and their paraphrases\\ 
+ & \bf verb phrases & \bf  categorized & \\ 
  & \bf  found by regex & \bf as light verbs & \\ \hline
 make & 46 & 35 & make a call, make a decision, make a suggestion\\
 have & 105 & 45 & have a ball, have a conversation, have a word\\
@@ -385,7 +385,7 @@ over & 67 & 65 \\
 \hline
 \end{tabular}
 \end{center}
-\caption{\label{verb-particle} Verb-particle constructions. }
+\caption{\label{verb-particle} Verb-particle constructions found in PPDB by our regular expression search. }
 \end{table*}
 
 
@@ -434,7 +434,7 @@ We used the 500 manually classified examples from Table \ref{big-table} as train
 
 \subsection{Results}
 
-We used an SVM classifier (libsvm) with these features on our sample of 500 words from the PPDB L corpus. With ten-fold cross-validation, the accuracy of the classifier was 76.4\%. This improves beyond the majority class baseline by 7.2\% absolute / 10.4\% relative.
+We used an SVM classifier (libsvm) with these features on our sample of 500 words from the PPDB L corpus. Averaged over the ten-fold cross-validation, the accuracy of the classifier was 76.4\%. This improves over the majority class baseline by 7.2\% absolute / 10.4\% relative.
 
 \section{Using paraphrased MWEs for an NLP task}
 
