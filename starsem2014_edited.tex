@@ -297,11 +297,11 @@ alternate spelling & 1 & al-najaf, al nagaf\\
 \hline \bf Light verb & \bf Manually  & \bf Number  & \bf Example matches, and their paraphrases\\ 
  & \bf verb phrases & \bf  categorized & \\ 
  & \bf  found by regex & \bf as light verbs & \\ \hline
-make & 46 & 35 & make a call, make a decision, make a suggestion\\
-have & 105 & 45 & have a ball, have a conversation, have a word\\
-give & 11 & 4 & give a damn, give a reply\\
-take & 48 & 33 & take a break, take a look, take a walk\\
-hold & 3 & 1 & hold a debate\\
+make & 46 & 35 & make a call/phone, make a decision/decide, make a suggestion/afford\\
+have & 105 & 45 & have a ball/dream, have a conversation/discuss, have a word/talk\\
+give & 11 & 4 & give a damn/care, give a reply/reply\\
+take & 48 & 33 & take a break/pause, take a look/watch, take a walk/wind\\
+hold & 3 & 1 & hold a debate/discuss\\
 \hline
 \end{tabular}
 \hfill{}
@@ -358,7 +358,7 @@ The two most common types of paraphrases were paraphrastic expansions of single 
 
 \subsection{Directly locating MWEs}
 
-In addition to categorizing a random sample of paraphrases, we searched for instances of light verbs and verb-particle constructions. The light verbs were those with the verb ``have'', ``take'', ``make'', ``hold'' or ``give'' followed by a noun phrase. The verb-particle constructions were any verbs followed by the particles ``down'', ``up'', ``on'', ``out'', ``over'' or ``upon''. 
+In addition to categorizing a random sample of paraphrases, we searched for instances of light verbs and verb-particle constructions in the PPDB XXL file. The light verbs were those with the verb ``have'', ``take'', ``make'', ``hold'' or ``give'' followed by a noun phrase. The verb-particle constructions were any verbs followed by the particles ``down'', ``up'', ``on'', ``out'', ``over'' or ``upon''. 
 %Negation instances had the word ``not'' either in the original or the expanded paraphrase. Comparatives had the word ``more,'' and superlatives had the word ``most.''
 
 To find instances of verb-particle constructions, we constructed a regular expression to match a list of particles at the end of a phrase. The regex {\tt particle\textbackslash b} matched phrases where the potential particle was not the first word, and ensured that it was not a substring of another word (e.g., `onto' instead of `on'). For example, to find potential instances of verb-particle constructions with the particle `up', we searched for the following regular expression: {\tt up\textbackslash b}.
@@ -372,23 +372,21 @@ The results from these searches are summarized in the Tables \ref{light-verbs} a
 \begin{tabular}{|l|l|l|p{.5\linewidth}|}
 \hline \bf Verb particle & \bf Found  & \bf Number  & \bf Example matches, and their paraphrases\\ 
  & \bf   by regex & \bf correct & \\ \hline
-up & 439 & 439 & \\
-about & 115 & 10 & \\
-around & 47 & 44 \\
-back & 156 & 145 \\
-down & 195 & 190 \\
-in & 207 & 32 \\
-off & 134 & 134 \\
-on & 196 & 109 \\
-out & 383 & 383 \\
-over & 67 & 65 \\
+up & 439 & 439 & blow up/explode, cheer up/courage, dream up/imagine\\
+about & 115 & 10 & bring about/achieve, come about/arisen, move about/scroll\\
+around & 47 & 44 & kid around/idiot, playing around/playing, sit around/sit\\
+back & 156 & 145 & fall back/retirement, fight back/retaliate, roll back/reverse\\
+down & 195 & 190 & bow down/bow, break down/decompose, calm down/relax\\
+in & 207 & 32 & break in/enter, check in/protect, dig in/eat\\
+off & 134 & 134 & back off/back, ease off/relax, pull off/remove\\
+on & 196 & 109 & carry on/continue, catch on/take, hang on/wait\\
+out & 383 & 383 & back out/return, bail out/jump, single out/highlight\\
+over & 67 & 65 & move over/push, pull over/stop, start over/zero\\
 \hline
 \end{tabular}
 \end{center}
 \caption{\label{verb-particle} Verb-particle constructions found in PPDB by our regular expression search. }
 \end{table*}
-
-
 
 
 %
@@ -462,7 +460,7 @@ Of the 18 other paraphrases sampled, all were parsed correctly in their original
   \caption{Sentence with substitution: I'll leverage the first cab to come along.}
   \label{fig:sub2}
 \end{subfigure}
-\caption{Parse trees for a sentence pair where substituting the single-word paraphrase for the MWE (in figure (b)) yields a better parse than the original sentence (in figure (a)).}
+\caption{Parse trees for a sentence pair where substituting the single-word paraphrase for the MWE (in figure (b)) yields a better parse than the original sentence (in figure (a)). In the parse of the modified sentence, ``to come along" modifies ``the first cab," which is correct, while in the parse of the original sentence it does not.}
 \label{avail}
 \end{figure*}
 
@@ -483,7 +481,7 @@ on the NHS.}
   \caption{Sentence with substitution: A new vaccine against the deadly disease meningitis is set to be issued free on the NHS.}
   \label{fig:sub2}
 \end{subfigure}
-\caption{Parse trees for a sentence pair where the original sentence (in figure (a)) yields a better parse than substituting the single-word paraphrase for the MWE (in figure (b)).}
+\caption{Parse trees for a sentence pair where the original sentence (in figure (a)) yields a better parse than substituting the single-word paraphrase for the MWE (in figure (b)). In the parse of the original phrase, ``on the NHS" modifies the verb phrase headed by ``issued," which is correct, while in the parse of the modified phrase it does not.}
 \label{issued}
 \end{figure*}
 
@@ -503,7 +501,7 @@ on the NHS.}
   \caption{Sentence with substitution: See how workers are gutting the 580 Building to place for luxury apartments.}
   \label{fig:sub2}
 \end{subfigure}
-\caption{Parse trees for a sentence pair where the original sentence (in figure (a)) yields a better parse than substituting the single-word paraphrase for the MWE (in figure (a)).}
+\caption{Parse trees for a sentence pair where the original sentence (in figure (a)) yields a better parse than substituting the single-word paraphrase for the MWE (in figure (b)). In the modified sentence, the substituted word (``place") is misparsed as a noun.}
 \label{place}
 \end{figure*}
 
